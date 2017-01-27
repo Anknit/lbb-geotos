@@ -1,4 +1,8 @@
 angular.module('geotos', ['geotos.home', 'ngRoute'])
+    .constant('appConstant', {
+        imageServerBase: 'https://api.flickr.com/services/rest/',
+        flickerApiKey: 'b8e6e813f6ad97df5138f3f389b73702'
+    })
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
@@ -14,6 +18,7 @@ angular.module('geotos', ['geotos.home', 'ngRoute'])
             });
     })
     .run(['$rootScope', '$window', function ($rootScope, $window) {
+        $rootScope.marker;
         $window.initGMAp = function () {
             var mapOptions = {
                 zoom: 10,
@@ -25,12 +30,18 @@ angular.module('geotos', ['geotos.home', 'ngRoute'])
 
             $rootScope.map.addListener('click', function (e) {
                 placeMarkerAndPanTo(e.latLng, $rootScope.map);
-                $rootScope.$broadcast('newPinPoint', {data: e.latLng});
+                $rootScope.$broadcast('newPinPoint', {
+                    data: e.latLng
+                });
             });
         }
 
         function placeMarkerAndPanTo(latLng, map) {
-            var marker = new google.maps.Marker({
+            if($rootScope.marker) {
+                $rootScope.marker.setMap(null);
+                delete $rootScope.marker;
+            }
+            $rootScope.marker = new google.maps.Marker({
                 position: latLng,
                 map: map
             });
