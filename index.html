@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#333333">
+    <link type="text/css" rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
+    <style>
+        #map{
+            width: 100%;
+            height:300px;
+        }
+    </style>
+</head>
+
+<body data-ng-app="geotos">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="map"></div>
+            </div>
+        </div>
+        <div class="row" data-ng-view>
+        </div>
+    </div>
+    <script type="application/javascript" src="libs/angular/angular.min.js"></script>
+    <script type="application/javascript" src="libs/angular/angular-route.min.js"></script>
+    <script type="application/javascript" src="app/app.js"></script>
+    <script type="application/javascript" src="app/home/home.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6DdHmvotpwgMgFDWH12b-zpHp5Mdp0P4&callback=initGMAp" async defer>
+    </script>
+</body>
+
+</html>

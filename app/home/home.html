@@ -1,0 +1,7 @@
+<h2>Home</h2>
+<div class="image-container">
+    <div data-ng-repeat="photo in photosArr" class="image-box">
+        <img class="list-image" data-ng-src="{{'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
+             '/' + photo.id + '_' + photo.secret + '.jpg'}}" />
+    </div>
+</div>
