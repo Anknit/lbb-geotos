@@ -6,20 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#333333">
     <link type="text/css" rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
-    <style>
-        body{
-            background: #f5f5f5;
-        }
-        #map{
-            width: 100%;
-            height:300px;
-        }
-        .go-to-top{
-            position:fixed;
-            bottom: 25px;
-            right: 30px;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="app/app.css"/>
+    <link type="text/css" rel="stylesheet" href="app/home/home.css" />
 </head>
 
 <body data-ng-app="geotos">
@@ -38,11 +26,7 @@
         <div class="row" data-ng-view>
         </div>
     </div>
-    <div class="go-to-top">
-        <div class="top-arrow">
-            <span class="glyphicon glyphicon-arrow-up"></span>
-        </div>
-    </div>
+    <div class="go-to-top" data-top-scroll></div>
     <script type="application/javascript" src="libs/angular/angular.min.js"></script>
     <script type="application/javascript" src="libs/angular/angular-route.min.js"></script>
     <script type="application/javascript" src="app/app.js"></script>

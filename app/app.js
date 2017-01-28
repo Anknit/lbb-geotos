@@ -9,16 +9,20 @@ angular.module('geotos', ['geotos.home', 'ngRoute'])
                 controller: 'homeCtrl',
                 templateUrl: 'app/home/home.html'
             })
-            .when('/search/:searchParams', {
-                controller: 'searchCtrl',
-                templateUrl: 'app/search/search.html'
-            })
             .otherwise({
                 templateUrl: 'app/404.html'
             });
     })
     .run(['$rootScope', '$window', function ($rootScope, $window) {
         $rootScope.marker;
+        $window.onscroll = function () {
+            var bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if (bodyScrollTop > 5) {
+                document.body.classList.add('scroll-active');
+            } else {
+                document.body.classList.remove('scroll-active');
+            }
+        };
         $window.initGMAp = function () {
             var mapOptions = {
                 zoom: 10,
@@ -47,4 +51,14 @@ angular.module('geotos', ['geotos.home', 'ngRoute'])
             });
             map.panTo(latLng);
         }
+}])
+.directive('topScroll', [function(){
+    return {
+        template: '<div class="top-arrow"><span class="glyphicon glyphicon-arrow-up"></span></div>',
+        link: function (scope, elem, attrs) {
+            elem.on('click', function() {
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+            })
+        }
+    };
 }]);
